@@ -29,10 +29,13 @@ player_to_words = {"player1": ["BLUE", "TENNIS", "EXIT"], "wordNerd": ["EARTH", 
 #use score_word() to find how points each player has
 player_to_points = {}
 
-for players, words in player_to_words.items():
-  player_points = 0
-  for word in words:
-    player_points += score_word(word)
-    player_to_points[players] = words
-  print(str(players) + " has " + str(player_points) + " points.")
-  
+#create total_points() to make reusable game
+def total_points(player_words):
+    for players, words in player_words.items():
+        player_points = 0
+        for word in words:
+            player_points += score_word(word)
+            player_to_points[players] = words
+        print(str(players) + " has " + str(player_points) + " points.")
+    
+total_points(player_to_words)
