@@ -13,3 +13,13 @@ letter_to_points = {letter:point for letter, point in zip(letters, points)}
 #add blank tile to dictionary
 letter_to_points[" "] = 0
 # print(letter_to_points)
+
+#function to determine score of a word by getting value of each letter in word and returning total value 
+def score_word(word):
+  point_total = 0
+  for letter in word:
+    point_total += letter_to_points.get(letter, 0)
+  return point_total
+
+brownie_points = score_word("BROWNIE")
+print(brownie_points)
