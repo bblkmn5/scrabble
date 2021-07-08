@@ -22,4 +22,17 @@ def score_word(word):
   return point_total
 
 brownie_points = score_word("BROWNIE")
-print(brownie_points)
+
+#create test players with played words
+player_to_words = {"player1": ["BLUE", "TENNIS", "EXIT"], "wordNerd": ["EARTH", "EYES", "MACHINE"], "Lexi Con": ["ERASER", "BELLY", "HUSKY"], "Prof Reader": ["ZAP", "COMA", "PERIOD"]}
+
+#use score_word() to find how points each player has
+player_to_points = {}
+
+for players, words in player_to_words.items():
+  player_points = 0
+  for word in words:
+    player_points += score_word(word)
+    player_to_points[players] = words
+  print(str(players) + " has " + str(player_points) + " points.")
+  
