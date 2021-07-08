@@ -29,13 +29,24 @@ player_to_words = {"player1": ["BLUE", "TENNIS", "EXIT"], "wordNerd": ["EARTH", 
 #use score_word() to find how points each player has
 player_to_points = {}
 
-#create total_points() to make reusable game
-def total_points(player_words):
-    for players, words in player_words.items():
+#create update_point_totals() for game continuation
+def update_point_totals():
+    for players, words in player_to_words.items():
         player_points = 0
         for word in words:
             player_points += score_word(word)
             player_to_points[players] = words
         print(str(players) + " has " + str(player_points) + " points.")
-    
-total_points(player_to_words)
+
+#create play_word() to update player-played words and point totals
+def play_word(player, word):
+    if player in player_to_words:
+        player_to_words[player].append(word)
+    else:
+        print("That player does not exist")
+        quit
+    update_point_totals()
+
+play_word("player1", "CODE")
+play_word("player2", "BOOKSHELF")
+print(player_to_words)
